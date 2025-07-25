@@ -1,65 +1,92 @@
-import { Locator,Page,expect } from "@playwright/test";
+import { Locator, Page, expect } from "@playwright/test";
 import { faker } from '@faker-js/faker';
 
-export class RegisterPage{
-    readonly page: Page;
-    readonly firstname: Locator;
-    readonly lastname:Locator;
-    readonly userName: Locator;
-    readonly password: Locator;
-    readonly registerButton: Locator;
-    readonly userAlreadyExistError: Locator;
+export class RegisterPage {
+  readonly page: Page;
+  readonly firstnameInput: Locator;
+  readonly lastnameInput: Locator;
+  readonly userNameInput: Locator;
+  readonly passwordInput: Locator;
+  readonly registerButton: Locator;
+  readonly userAlreadyExistErrorMessage: Locator;
+  readonly backToLoginButton: Locator;
+  readonly registerHeader: Locator;
+  readonly weakPasswordError :Locator;
 
-    constructor(page: Page){
-        this.page = page;
-        this.firstname = page.locator('#firstname');
-        this.lastname = page.locator('#lastname');
-        this.userName = page.locator('#userName');
-        this.password = page.locator('#password');
-        this.registerButton = page.getByRole('button', { name: 'Register' });
-        this.userAlreadyExistError = page.locator('p#name.mb-1')
+  constructor(page: Page) {
+    this.page = page;
+    this.firstnameInput = page.locator('#firstname');
+    this.lastnameInput = page.locator('#lastname');
+    this.userNameInput = page.locator('#userName');
+    this.passwordInput = page.locator('#password');
+    this.registerButton = page.getByRole('button', { name: 'Register' });
+    this.userAlreadyExistErrorMessage = page.locator('#name');
+    this.registerHeader = page.locator('h4', { hasText: 'Register to Book Store' });
+    this.backToLoginButton = page.getByRole('button', { name: 'Back to Login' });
+    this.weakPasswordError = page.locator('p#name');
+  }
 
+  async goTo(): Promise<void> {
+    await this.page.goto("/register");
+  }
+
+  async pauseForCaptcha(): Promise<void> {
+    const captchaSelector = 'iframe[title="reCAPTCHA"]';
+    if (await this.page.locator(captchaSelector).isVisible()) {
+      console.log('CAPTCHA detected. Pausing for manual solving...');
+      await this.page.pause();
     }
+  }
 
-    async goTo() {
-        await this.page.goto("/register")
-    }
-
-    async registerToBookStoreText(){
-        const headerText = await this.page.locator('h4').textContent()
-
-        if(headerText){
-          expect(headerText.includes('Register to Book Store')).toBe(true);
-        }
-    }
-
-    async fillForm(){
-        await this.firstname.fill(faker.person.firstName());
-        await this.lastname.fill(faker.person.lastName())
-    }
-    async fillCredentials(username: string, password: string){
-        await this.userName.fill(username);
-        await this.password.fill(password)
+  async fillFormWithRandomData(): Promise<{ username: string; password: string }> {
+    const username = faker.internet.username({ firstName: 'Test' });
+    const password = faker.internet.password({ length: 12, prefix: 'P@ss' }); 
     
-    }
-   
-/**
- * Clicks the register button, waits for the confirmation dialog to appear,
- * avoids race conditions by handling the action and its resulting event together.
- */
-async submitAndVerifyDialog(expectedMessage: string) {
-  const [dialog] = await Promise.all([
-    this.page.waitForEvent('dialog'),
-    this.registerButton.click(),
-  ]);
+    await this.firstnameInput.fill(faker.person.firstName());
+    await this.lastnameInput.fill(faker.person.lastName());
+    await this.userNameInput.fill(username);
+    await this.passwordInput.fill(password);
 
-  expect(dialog.message()).toBe(expectedMessage);
+    return { username, password };
+  }
 
-  await dialog.accept();
-}
+  async fillCredentials(username: string, password: string): Promise<void> {
+    await this.userNameInput.fill(username);
+    await this.passwordInput.fill(password);
+  }
+
+  async clickRegister(): Promise<void> {
+    await this.registerButton.click();
+  }
+
+  async submitAndHandleDialog(expectedMessage: string): Promise<void> {
+    const dialogPromise = this.page.waitForEvent('dialog');
+    await this.registerButton.click();
+    const dialog = await dialogPromise;
+
+    expect(dialog.message()).toBe(expectedMessage);
+    await dialog.accept();
+  }
+
+  async isUsernameErrorVisible(): Promise<boolean> {
+    return this.userAlreadyExistErrorMessage.isVisible();
+  }
   
+  getRegisterHeader(): Locator {
+    return this.registerHeader;
+  }
 
-async isUsernameErrorVissible(){
-    return await this.userAlreadyExistError.isVisible()
+  
+  async fillFormWithWeakPassword(): Promise<string> {
+    const username = faker.internet.username();
+    // Weak password:lowercase letters, 5 chars
+    const weakPassword = faker.string.alpha({ length: 5, casing: 'lower' });
+
+    await this.firstnameInput.fill(faker.person.firstName());
+    await this.lastnameInput.fill(faker.person.lastName());
+    await this.userNameInput.fill(username);
+    await this.passwordInput.fill(weakPassword);
+
+    return weakPassword;
+  }
 }
-} 

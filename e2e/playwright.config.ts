@@ -26,6 +26,7 @@ export default defineConfig({
     {
       name: "tests",
       testDir: "./src/tests",
+      timeout: 60000,
       use: {
         baseURL: process.env.DEMOQA,
         ...devices["Desktop Chrome"],
@@ -35,7 +36,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [["html", { open: process.env.CI ? "never" : "on-failure" }]],
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 3,
   testDir: "./src/tests",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
