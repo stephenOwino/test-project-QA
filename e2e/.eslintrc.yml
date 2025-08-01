@@ -2,6 +2,9 @@ root: true
 parser: "@typescript-eslint/parser"
 parserOptions:
   project: true
+env:
+  node: true
+  es2021: true
 extends:
   - eslint:recommended
   - plugin:@typescript-eslint/strict-type-checked
@@ -12,7 +15,12 @@ extends:
   - plugin:perfectionist/recommended-natural-legacy
 plugins:
   - unused-imports
+  - "@typescript-eslint"
 rules:
+  # Your custom rules
+  quotes: ["error", "backtick"]
+  semi: ["error", "always"]
+
   playwright/expect-expect: off
   no-unused-vars: off
   unused-imports/no-unused-imports: error

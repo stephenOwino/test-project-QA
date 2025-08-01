@@ -8,9 +8,16 @@
 
 node_modules/
 
+.env
 .env.private
 .env.secret
 
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+allure-results/
+allure-report/
+html-report/
+practice.ts
+.env
