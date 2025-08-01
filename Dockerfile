@@ -8,4 +8,7 @@ WORKDIR /tests
 RUN npm install && \
     npx @playwright/test install
 
-CMD ["npm", "test"]
+RUN npx playwright install chrome
+
+
+CMD ["npm", "run", "test:serial"]
