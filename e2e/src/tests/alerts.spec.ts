@@ -1,8 +1,17 @@
-import {test,expect} from "../fixtures/alerts&BrowserWindows.fixture"
+import { test, expect } from "../fixtures/baseTest";
 
-test("alerts test" , async ({alertsPage}) =>{
-    await alertsPage.goTo();
-    await alertsPage.alertButtonClicked("You clicked a button");
-    
 
-})
+test.describe("ALERTS", () => {
+test("alert button clicked", async ({ alertsPage }) => {
+  await alertsPage.goTo();
+
+  await alertsPage.alertButtonClicked("You clicked a button");
+});
+
+test("timer alert appears after 5 seconds", async ({ alertsPage }) => {
+  await alertsPage.goTo();
+
+  await alertsPage.timerAlertButtonClickedAfter5Seconds("This alert appeared after 5 seconds");
+});
+});
+
