@@ -1,41 +1,23 @@
-import { test, expect } from "../fixtures/registerPage.fixture";
+import { test, expect } from "../fixtures/baseTest";
 import { faker } from "@faker-js/faker";
 
-async function retryStep(fn: () => Promise<void>, maxRetries = 3) {
-  let lastError;
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      await fn();
-      return;
-    } catch (err) {
-      lastError = err;
-      if (i < maxRetries - 1) {
-        console.warn(`Step failed, retrying (${i + 1}/${maxRetries})...`);
-      }
-    }
-  }
-  throw lastError;
-}
+
 
 test.describe('Register Page Scenarios', () => {
   test('should display the Register page header', async ({ registerPage }) => {
     await registerPage.goTo();
     await registerPage.pauseForCaptcha();
 
-    await retryStep(async () => {
       await expect(registerPage.getRegisterHeader()).toBeVisible({ timeout: 5000 });
       await expect(registerPage.getRegisterHeader()).toHaveText('Register to Book Store');
-    });
   });
 
   test('should successfully register a new user (manual CAPTCHA)', async ({ registerPage }) => {
     await registerPage.goTo();
     await registerPage.pauseForCaptcha();
 
-    await retryStep(async () => {
       await registerPage.fillFormWithRandomData();
       await registerPage.submitAndHandleDialog("User Register Successfully.");
-    });
   });
 
   test('should show an error when registering with an existing username', async ({ registerPage }) => {
@@ -50,14 +32,12 @@ test.describe('Register Page Scenarios', () => {
     await registerPage.goTo();
     await registerPage.pauseForCaptcha();
 
-    await retryStep(async () => {
       await registerPage.firstnameInput.fill(faker.person.firstName());
       await registerPage.lastnameInput.fill(faker.person.lastName());
       await registerPage.fillCredentials(username, password);
       await registerPage.clickRegister();
       await expect(registerPage.userAlreadyExistErrorMessage).toBeVisible({ timeout: 5000 });
       await expect(registerPage.userAlreadyExistErrorMessage).toHaveText('User exists!');
-    });
   });
 
  test('should show an error for a weak password', async ({ registerPage }) => {

@@ -35,11 +35,13 @@ export default defineConfig({
   ],
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [["html", { open: process.env.CI ? "never" : "on-failure" }]],
+  
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 3,
+  retries: process.env.CI ? 2 : 2,
   testDir: "./src/tests",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    ignoreHTTPSErrors: true,
     actionTimeout: 5000,
     screenshot: {
       fullPage: true,
