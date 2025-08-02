@@ -26,4 +26,13 @@ test.describe("ALERTS", () => {
       await expect(alertsPage.youSelectedCancelText).toHaveText("You selected Cancel");
     });
   });
+
+  // New test for the prompt dialog
+  test("prompt box - enter name and verify result", async ({ alertsPage }) => {
+    const testName = "Stephen"; // The name you want to enter
+    const expectedDialogMessage = "Please enter your name";
+
+    await alertsPage.promptButtonClickedAndEnterText(testName, expectedDialogMessage);
+    await expect(alertsPage.promptResultElement).toHaveText(`You entered ${testName}`);
+  });
 });

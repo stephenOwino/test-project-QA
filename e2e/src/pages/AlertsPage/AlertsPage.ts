@@ -61,5 +61,14 @@ export class AlertsPage {
     // Trigger the confirm dialog
     await this.confirmBoxButton.click();
   }
+  // Method for handling the prompt dialog
+  async promptButtonClickedAndEnterText(name: string, dialogMessage: string): Promise<void> {
+    this.page.once("dialog", async (dialog) => {
+      expect(dialog.message()).toBe(dialogMessage);
+      await dialog.accept(name); // Enter the provided name into the prompt
+      // await dialog.accept(); // Accept the dialog
+    });
+    await this.promtButton.click(); // Click the prompt button to trigger the dialog
+  }
 }
 
