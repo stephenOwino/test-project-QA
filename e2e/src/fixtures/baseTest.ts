@@ -2,11 +2,13 @@ import { test as baseTest, Page, expect } from "@playwright/test";
 import { RegisterPage } from "../pages/RegisterPage/RegisterPage";
 import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { AlertsPage } from "../pages/AlertsPage/AlertsPage";
+import { BrowserWindowsPage } from "../pages/BrowserWindowsPage/Browser-WindowsPage";
 
 type PageObjects = {
   registerPage: RegisterPage;
   loginPage: LoginPage;
   alertsPage: AlertsPage;
+  browserWindowsPage:BrowserWindowsPage;
 };
 
 type AuthFixture = {
@@ -24,6 +26,9 @@ export const test = baseTest.extend<PageObjects & AuthFixture>({
 
   alertsPage: async ({ page }, use) => {
     await use(new AlertsPage(page));
+  },
+  browserWindowsPage:async({page}, use) =>{
+    await use(new BrowserWindowsPage(page));
   },
 
   authenticatedPage: async ({ page, loginPage }, use) => {
