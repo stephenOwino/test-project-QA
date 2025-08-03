@@ -3,12 +3,14 @@ import { RegisterPage } from "../pages/RegisterPage/RegisterPage";
 import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { AlertsPage } from "../pages/AlertsPage/AlertsPage";
 import { BrowserWindowsPage } from "../pages/BrowserWindowsPage/Browser-WindowsPage";
+import { UploadDownloadPage } from "../pages/UploadDownloadPage/UploadDownloadPage";
 
 type PageObjects = {
   registerPage: RegisterPage;
   loginPage: LoginPage;
   alertsPage: AlertsPage;
   browserWindowsPage:BrowserWindowsPage;
+  uploadDownloadPage:UploadDownloadPage;
 };
 
 type AuthFixture = {
@@ -29,6 +31,9 @@ export const test = baseTest.extend<PageObjects & AuthFixture>({
   },
   browserWindowsPage:async({page}, use) =>{
     await use(new BrowserWindowsPage(page));
+  },
+  uploadDownloadPage: async({page} , use) =>{
+    await use(new UploadDownloadPage(page));
   },
 
   authenticatedPage: async ({ page, loginPage }, use) => {

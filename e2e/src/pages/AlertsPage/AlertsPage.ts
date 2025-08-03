@@ -29,7 +29,7 @@ export class AlertsPage {
 
   async alertButtonClicked(dialogMessage: string): Promise<void> {
     this.page.once('dialog', async (dialog) => {
-      // Optionally verify the message
+      // verify the message
       expect(dialog.message()).toBe(dialogMessage);
       await dialog.accept();
     });
@@ -65,10 +65,12 @@ export class AlertsPage {
   async promptButtonClickedAndEnterText(name: string, dialogMessage: string): Promise<void> {
     this.page.once("dialog", async (dialog) => {
       expect(dialog.message()).toBe(dialogMessage);
-      await dialog.accept(name); // Enter the provided name into the prompt
-      // await dialog.accept(); // Accept the dialog
+      // Enter the provided name "stephen" into the prompt
+      await dialog.accept(name); 
+      // await dialog.accept(); 
     });
-    await this.promtButton.click(); // Click the prompt button to trigger the dialog
+    // Click the prompt button to trigger the dialog
+    await this.promtButton.click(); 
   }
 }
 

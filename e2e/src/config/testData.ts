@@ -18,7 +18,8 @@ export const testData = {
     confirmOkResult: "You selected Ok",
     confirmCancelResult: "You selected Cancel",
     promptDialogMessage: "Please enter your name",
-    promptResultPrefix: "You entered ", //useful abstraction
+    //abstraction
+    promptResultPrefix: "You entered ", 
     testName: "Stephen"
   },
 
@@ -27,6 +28,14 @@ export const testData = {
         browserHeader: "Browser Windows",
         samplePageMessage: "This is a sample page",
         newWindowMessageText: "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.",
+    },
+    uploadDownload: {
+        headerText: "Upload and Download",
+        downloadFileName: "sampleFile.jpeg",
+        uploadFile: "sampleFile.jpeg", 
+        uploadedSuccessMessagePrefix: "C:\\fakepath\\",
+        downloadButtonText: "Download",
+        selectFileLabelText: "Select a file"
     }
 
 };
