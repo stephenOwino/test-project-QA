@@ -68,14 +68,31 @@ export class WebTablesPage {
 }
 
 
-    async assertRecordExists(record: { firstName: string;lastName: string;email: string; age: string;salary: string;department: string;
-}): Promise<void> {
-  const { firstName, lastName, email, age, salary, department } = record;
+async assertRecordExists(record: { firstName: string;lastName: string;email: string; age: string;salary: string;department: string;}): Promise<void> {
+    const { firstName, lastName, email, age, salary, department } = record;
 
   const row = this.page.locator(`.rt-tr-group:has-text("${firstName}"):has-text("${lastName}"):has-text("${email}"):has-text("${age}"):has-text("${salary}"):has-text("${department}")`);
 
   await expect(row).toBeVisible();
 }
 
+
+async deleteRecord(record: { firstName: string;lastName: string;email: string;age: string;salary: string; department: string}): Promise<void> {
+  const row = this.page.locator(
+    `.rt-tr-group:has-text("${record.firstName}"):has-text("${record.lastName}"):has-text("${record.email}")`
+  );
+
+   const deleteButton = row.locator('[id^="delete-record"]');
+  await expect(deleteButton).toBeVisible();
+  await deleteButton.click();
+}
+
+async assertRecordNotExists(record: {firstName: string;lastName: string;email: string;}): Promise<void> {
+  const row = this.page.locator(
+    `.rt-tr-group:has-text("${record.firstName}"):has-text("${record.lastName}"):has-text("${record.email}")`
+  );
+
+  await expect(row).toHaveCount(0);
+}
 }
 

@@ -11,5 +11,5 @@ export const WebTableLocators  ={
     departmentInput: '#department',
     submitButton: '#submit',
     rowLocator:'.rt-tr.-padRow:nth-child(4)',
-    deleteIcon: 'svg > path',
+    deleteIcon: 'span#delete-record-1 svg',
 }

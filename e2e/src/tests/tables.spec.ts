@@ -2,7 +2,7 @@ import {test,expect} from "../fixtures/baseTest"
 import { testData } from "../config/testData";
 
 
-    test.describe("Table Test", () => {
+test.describe("Table Test", () => {
 
       test.beforeEach(async ({ webTablesPage }) => {
         await webTablesPage.goTo();
@@ -13,11 +13,13 @@ import { testData } from "../config/testData";
       })
 
       
-      test("Add New Record To Table", async ({ webTablesPage }) => {
+   test("Add and Delete Record from Table", async ({ webTablesPage }) => {
       const newRecord = await webTablesPage.clickAddNewRecordButton();
       await webTablesPage.assertRecordExists(newRecord);
+
+      await webTablesPage.deleteRecord(newRecord);
+      await webTablesPage.assertRecordNotExists(newRecord);
+  });
+
 });
-
-
-    });
 
