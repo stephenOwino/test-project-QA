@@ -55,13 +55,22 @@ export async function initDatabase(): Promise<SQLiteDatabase | undefined> {
 
     await db.exec(`
       CREATE TABLE IF NOT EXISTS UserPhone (
-        id int NOT NULL AUTO_INCREMENT,
-        user_id bigint NOT NULL,
-        phone_country_id int NOT NULL,
-        phone varchar(20) NOT NULL,
-        order_index int NOT NULL,
-        PRIMARY KEY (id),
-        FOREIGN KEY (appuser_id) REFERENCES appuser (id),
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        phone_country_id INTEGER NOT NULL,
+        phone TEXT NOT NULL,
+        order_index INTEGER NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES appuser (id)
+      );
+    `);
+
+    await db.exec(`
+      CREATE TABLE IF NOT EXISTS attachment (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        filename TEXT NOT NULL,
+        uploadedAt TEXT NOT NULL DEFAULT (datetime('now')),
+        userId INTEGER NOT NULL,
+        FOREIGN KEY (userId) REFERENCES appuser (id)
       );
     `);
 

@@ -14,7 +14,6 @@ export class WebTablesPage {
     readonly departmentInput: Locator;
     readonly submitButton: Locator;
     readonly rowLocator: Locator;
-
     readonly deleteIcon: Locator;
 
     constructor(page : Page){

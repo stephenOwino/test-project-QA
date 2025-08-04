@@ -42,6 +42,14 @@ export const testData = {
     webTable:{
       headerText: "Web Tables",
 
-    }
+    },
 
+    //db data
+     dbTest: {
+    usernamePrefix: "dbtest_",
+    emailDomain: "@example.com",
+    phoneNumber: "+111111111",
+    attachmentFileName: "playwright_attachment.pdf",
+  },
 };
+

@@ -1,4 +1,3 @@
-// src/tests/upload-download.spec.ts
 
 import { test, expect } from "../fixtures/baseTest";
 import { testData } from "../config/testData";

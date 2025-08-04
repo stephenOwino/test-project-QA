@@ -1,50 +1,64 @@
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = "file:./test.db"
+  provider = "sqlite"
+  url      = "file:./test.db"
 }
 
 model AppUser {
-    id                         BigInt   @default(autoincrement())
-    is_deleted                 Boolean  @default(false)
-    username                   String   @unique
-    firstname                  String
-    lastname                   String
-    password                   String
-    email                      String
-    nonlocked                  Boolean
-    enabled                    Boolean
-    last_time_password_updated DateTime @default("1970-01-01T00:00:00.000Z")
-    password_never_expires     Boolean  @default(false)
-    cannot_change_password     Boolean  @default(false)
-
-    roles AppUserRole[]
-
-    @@id([id])
-    @@map("appuser")
+  id                         Int      @id @default(autoincrement())
+  username                   String   @unique
+  firstname                  String
+  lastname                   String
+  password                   String
+  email                      String   @unique
+  nonlocked                  Boolean
+  enabled                    Boolean
+  last_time_password_updated DateTime @default("1970-01-01T00:00:00.000Z")
+  password_never_expires     Boolean  @default(false)
+  cannot_change_password     Boolean  @default(false)
+  is_deleted                 Boolean  @default(false)
+  roles      AppUserRole[]
+  phones     UserPhone[]
+  attachments Attachment[]
+  @@map("appuser")
 }
 
 model Role {
-    id          BigInt  @default(autoincrement())
-    name        String  @unique
-    description String
-    is_disabled Boolean @default(false)
-
-    appUsers AppUserRole[]
-
-    @@id([id])
-    @@map("role")
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  description String
+  is_disabled Boolean @default(false)
+  appUsers    AppUserRole[]
+  @@map("role")
 }
 
 model AppUserRole {
-    appuser_id BigInt
-    role_id    BigInt
-    AppUser    AppUser @relation(fields: [appuser_id], references: [id])
-    Role       Role    @relation(fields: [role_id], references: [id])
+  appuser_id Int
+  role_id    Int
+  AppUser    AppUser @relation(fields: [appuser_id], references: [id])
+  Role       Role    @relation(fields: [role_id], references: [id])
+  @@id([appuser_id, role_id])
+  @@map("appuser_role")
+}
 
-    @@id([appuser_id, role_id])
-    @@map("appuser_role")
+model UserPhone {
+  id               Int    @id @default(autoincrement())
+  user_id          Int
+  phone_country_id Int
+  phone            String
+  order_index      Int
+  appuser          AppUser @relation(fields: [user_id], references: [id])
+  @@map("UserPhone")
+}
+
+model Attachment {
+  id         Int      @id @default(autoincrement())
+  filename   String
+  uploadedAt DateTime @default(now())
+  userId     Int
+  user       AppUser  @relation(fields: [userId], references: [id])
+  @@map("attachment")
 }

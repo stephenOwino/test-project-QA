@@ -23,7 +23,7 @@
   "dependencies": {
     "@dotenvx/dotenvx": "^1.6.4",
     "@playwright/test": "^1.47.2",
-    "@prisma/client": "5.14.0",
+    "@prisma/client": "^6.13.0",
     "bwip-js": "^4.5.1",
     "canvas": "^2.11.2",
     "cross-env": "^7.0.3",
@@ -53,7 +53,7 @@
     "husky": "^9.1.5",
     "lint-staged": "^15.2.10",
     "prettier": "3.3.3",
-    "prisma": "5.14.0",
+    "prisma": "^6.13.0",
     "tsc-files": "^1.1.4",
     "typescript": "^5.5.4"
   }
