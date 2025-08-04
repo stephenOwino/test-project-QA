@@ -2,17 +2,17 @@
   "name": "e2e",
   "private": true,
   "scripts": {
-  "lint": "eslint . --ext .ts,.tsx",
-  "lint:fix": "eslint . --ext .ts,.tsx --fix",
-  "lint-staged": "lint-staged",
-  "test:ui": "playwright test --ui",
-  "test:report": "playwright show-report",
-  "prepare": "husky install",
-  "generate": "npx prisma generate",
-  "push": "npx prisma db push",
-  "studio": "npx prisma studio",
-  "init:db": "npx ts-node db/initDatabase.ts"
-},
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "lint-staged": "lint-staged",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "prepare": "husky install",
+    "generate": "npx prisma generate",
+    "push": "npx prisma db push",
+    "studio": "npx prisma studio",
+    "init:db": "npx ts-node db/initDatabase.ts"
+  },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
     "**/*.{js,ts,html}": "eslint --fix",
@@ -34,6 +34,7 @@
     "redis": "^4.7.0",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
+    "winston": "^3.17.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
@@ -41,6 +42,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.9.1",
     "@types/qrcode": "^1.5.5",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^8.4.0",
     "@typescript-eslint/parser": "^8.4.0",
     "eslint": "^8.57.0",

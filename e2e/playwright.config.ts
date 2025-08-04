@@ -15,13 +15,10 @@ BigInt.prototype.toJSON = function (): string {
   return this.toString();
 };
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
 export default defineConfig({
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   fullyParallel: true,
+
   projects: [
     {
       name: `tests`,
@@ -33,13 +30,16 @@ export default defineConfig({
       },
     },
   ],
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [[`html`, { open: process.env.CI ? `never` : `on-failure` }]],
 
-  /* Retry on CI only */
+  reporter: [
+    [`html`, { open: process.env.CI ? `never` : `on-failure` }],
+    ['./reporters/dist/custom-reporter.js'],
+  ],
+
+
   retries: process.env.CI ? 2 : 2,
   testDir: `./src/tests`,
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+
   use: {
     actionTimeout: 5000,
     ignoreHTTPSErrors: true,
@@ -51,6 +51,5 @@ export default defineConfig({
     video: `retain-on-failure`,
   },
 
-  /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
 });

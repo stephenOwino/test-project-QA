@@ -1,4 +1,3 @@
-
 import { expect, Locator, Page } from "@playwright/test";
 import * as fs from "fs";
 import * as path from "path";
@@ -42,14 +41,21 @@ export class UploadDownloadPage {
     const suggestedName = download.suggestedFilename();
     expect(suggestedName).toBe(expectedFileName);
 
+    // Ensure directory exists before saving the file
     const dirPath = path.dirname(path.resolve(savePath));
     try {
       fs.mkdirSync(dirPath, { recursive: true });
+    } catch (mkdirError) {
+      console.error(`Failed to create directory: ${mkdirError}`);
+      throw mkdirError;
+    }
+
+    try {
       await download.saveAs(savePath);
       console.log(`Downloaded file saved to: ${savePath}`);
-    } catch (error) {
-      console.error(`Failed to save downloaded file: ${error}`);
-      throw error;
+    } catch (saveError) {
+      console.error(`Failed to save downloaded file: ${saveError}`);
+      throw saveError;
     }
   }
 
@@ -64,4 +70,5 @@ export class UploadDownloadPage {
     await expect(this.header).toHaveText(expectedText);
   }
 }
+
 

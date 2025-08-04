@@ -1,0 +1,58 @@
+{"level":"info","message":{"event":"Test Started","title":"timer alert appears after 5 seconds"},"timestamp":"2025-08-04T15:15:19.963Z"}
+{"level":"info","message":{"event":"Test Started","title":"alert button clicked"},"timestamp":"2025-08-04T15:15:20.009Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"timer alert appears after 5 seconds"},"timestamp":"2025-08-04T15:16:24.628Z"}
+{"level":"info","message":{"event":"Test Started","title":"OK clicked"},"timestamp":"2025-08-04T15:16:24.661Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"alert button clicked"},"timestamp":"2025-08-04T15:16:27.361Z"}
+{"level":"info","message":{"event":"Test Started","title":"Cancel clicked"},"timestamp":"2025-08-04T15:16:27.367Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"Cancel clicked"},"timestamp":"2025-08-04T15:17:09.753Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"OK clicked"},"timestamp":"2025-08-04T15:17:11.611Z"}
+{"level":"info","message":{"event":"Test Started","title":"Cancel clicked"},"timestamp":"2025-08-04T15:17:28.149Z"}
+{"level":"info","message":{"event":"Test Started","title":"OK clicked"},"timestamp":"2025-08-04T15:17:29.726Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"Cancel clicked"},"timestamp":"2025-08-04T15:18:19.023Z"}
+{"level":"info","message":{"event":"Test Started","title":"prompt box - enter name and verify result"},"timestamp":"2025-08-04T15:18:19.029Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"OK clicked"},"timestamp":"2025-08-04T15:18:21.082Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"prompt box - enter name and verify result"},"timestamp":"2025-08-04T15:18:43.217Z"}
+{"level":"info","message":{"event":"Test Started","title":"should display the Browser Windows page header"},"timestamp":"2025-08-04T15:18:43.235Z"}
+{"level":"info","message":{"event":"Test Started","title":"OK clicked"},"timestamp":"2025-08-04T15:19:18.436Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"should display the Browser Windows page header"},"timestamp":"2025-08-04T15:19:27.148Z"}
+{"level":"info","message":{"event":"Test Started","title":"should open a new tab and display expected text"},"timestamp":"2025-08-04T15:19:27.155Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"OK clicked"},"timestamp":"2025-08-04T15:20:00.413Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"should open a new tab and display expected text"},"timestamp":"2025-08-04T15:20:06.702Z"}
+{"level":"info","message":{"event":"Test Started","title":"should open a message window and display specific text"},"timestamp":"2025-08-04T15:20:06.711Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"should open a message window and display specific text"},"timestamp":"2025-08-04T15:20:35.244Z"}
+{"level":"info","message":{"event":"Test Started","title":"should create user with phone and attachment"},"timestamp":"2025-08-04T15:20:35.386Z"}
+{"level":"info","message":{"event":"Test Started","title":"should open a new window and display expected text"},"timestamp":"2025-08-04T15:20:36.553Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"should create user with phone and attachment"},"timestamp":"2025-08-04T15:20:36.565Z"}
+{"level":"info","message":{"event":"Test Started","title":"should display correct profile info for logged-in user"},"timestamp":"2025-08-04T15:20:36.578Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"should display correct profile info for logged-in user"},"timestamp":"2025-08-04T15:21:26.647Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"should open a new window and display expected text"},"timestamp":"2025-08-04T15:21:27.812Z"}
+{"level":"info","message":{"event":"Test Started","title":"should display correct profile info for logged-in user"},"timestamp":"2025-08-04T15:21:43.645Z"}
+{"level":"info","message":{"event":"Test Started","title":"should open a new window and display expected text"},"timestamp":"2025-08-04T15:21:44.782Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"should open a new window and display expected text"},"timestamp":"2025-08-04T15:22:35.407Z"}
+{"level":"info","message":{"event":"Test Started","title":"should display invalid login message on incorrect credentials"},"timestamp":"2025-08-04T15:22:35.448Z"}
+{"level":"info","message":{"event":"Test Finished","status":"timedOut","title":"should display correct profile info for logged-in user"},"timestamp":"2025-08-04T15:22:55.192Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"should display invalid login message on incorrect credentials"},"timestamp":"2025-08-04T15:23:08.605Z"}
+{"level":"info","message":{"event":"Test Started","title":"should display the Register page header"},"timestamp":"2025-08-04T15:23:08.623Z"}
+{"level":"info","message":{"event":"Test Started","title":"should display correct profile info for logged-in user"},"timestamp":"2025-08-04T15:23:16.819Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"should display the Register page header"},"timestamp":"2025-08-04T15:24:34.091Z"}
+{"level":"info","message":{"event":"Test Started","title":"should successfully register a new user (manual CAPTCHA)"},"timestamp":"2025-08-04T15:24:34.113Z"}
+{"level":"info","message":{"event":"Test Finished","status":"timedOut","title":"should display correct profile info for logged-in user"},"timestamp":"2025-08-04T15:24:50.913Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"should successfully register a new user (manual CAPTCHA)"},"timestamp":"2025-08-04T15:25:07.892Z"}
+{"level":"info","message":{"event":"Test Started","title":"should show an error when registering with an existing username"},"timestamp":"2025-08-04T15:25:18.566Z"}
+{"level":"info","message":{"event":"Test Started","title":"should successfully register a new user (manual CAPTCHA)"},"timestamp":"2025-08-04T15:25:43.448Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"should show an error when registering with an existing username"},"timestamp":"2025-08-04T15:26:00.339Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"should successfully register a new user (manual CAPTCHA)"},"timestamp":"2025-08-04T15:26:22.539Z"}
+{"level":"info","message":{"event":"Test Started","title":"should show an error when registering with an existing username"},"timestamp":"2025-08-04T15:26:26.191Z"}
+{"level":"info","message":{"event":"Test Started","title":"should successfully register a new user (manual CAPTCHA)"},"timestamp":"2025-08-04T15:26:52.178Z"}
+{"level":"info","message":{"event":"Test Finished","status":"timedOut","title":"should show an error when registering with an existing username"},"timestamp":"2025-08-04T15:28:17.806Z"}
+{"level":"info","message":{"event":"Test Finished","status":"timedOut","title":"should successfully register a new user (manual CAPTCHA)"},"timestamp":"2025-08-04T15:28:18.812Z"}
+{"level":"info","message":{"event":"Test Started","title":"should show an error when registering with an existing username"},"timestamp":"2025-08-04T15:28:36.834Z"}
+{"level":"info","message":{"event":"Test Started","title":"should show an error for a weak password"},"timestamp":"2025-08-04T15:28:37.553Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"should show an error when registering with an existing username"},"timestamp":"2025-08-04T15:29:51.285Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"should show an error for a weak password"},"timestamp":"2025-08-04T15:29:51.765Z"}
+{"level":"info","message":{"event":"Test Started","title":"should display the table page header"},"timestamp":"2025-08-04T15:30:04.625Z"}
+{"level":"info","message":{"event":"Test Started","title":"should show an error for a weak password"},"timestamp":"2025-08-04T15:30:04.926Z"}
+{"level":"info","message":{"event":"Test Finished","status":"passed","title":"should display the table page header"},"timestamp":"2025-08-04T15:30:53.181Z"}
+{"level":"info","message":{"event":"Test Started","title":"Add and Delete Record from Table"},"timestamp":"2025-08-04T15:30:53.187Z"}
+{"level":"info","message":{"event":"Test Finished","status":"failed","title":"should show an error for a weak password"},"timestamp":"2025-08-04T15:30:53.975Z"}
+{"level":"info","message":{"event":"Test Started","title":"should show an error for a weak password"},"timestamp":"2025-08-04T15:31:09.424Z"}
