@@ -1,46 +1,51 @@
-import { test, expect } from '@playwright/test';
-import { PrismaClient } from '@prisma/client';
-import { testData } from '../config/testData';
+import { expect, test } from "@playwright/test";
+import { PrismaClient } from "@prisma/client";
+
+import { testData } from "../config/testData";
 
 const prisma = new PrismaClient();
 
-test.describe('AppUser DB Test (via Prisma)', () => {
+test.describe(`AppUser DB Test (via Prisma)`, () => {
   test.afterAll(async () => {
     await prisma.$disconnect();
   });
 
-  test('should create user with phone and attachment', async () => {
+  test(`should create user with phone and attachment`, async () => {
     const now = Date.now();
 
     const user = await prisma.appUser.create({
       data: {
-        username: `${testData.dbTest.usernamePrefix}${now}`,
-        firstname: "DB",
-        lastname: "Test",
-        email: `${testData.dbTest.usernamePrefix}${now}${testData.dbTest.emailDomain}`,
-        password: "123",
-        enabled: true,
-        nonlocked: true,
-        is_deleted: false,
-        last_time_password_updated: new Date("1970-01-01T00:00:00.000Z"),
-        password_never_expires: false,
-        cannot_change_password: false,
-        phones: {
-          create: [{
-            phone_country_id: 1,
-            phone: testData.dbTest.phoneNumber,
-            order_index: 1,
-          }],
-        },
         attachments: {
-          create: [{
-            filename: testData.dbTest.attachmentFileName,
-          }],
+          create: [
+            {
+              filename: testData.dbTest.attachmentFileName,
+            },
+          ],
         },
+        cannot_change_password: false,
+        email: `${testData.dbTest.usernamePrefix}${now}${testData.dbTest.emailDomain}`,
+        enabled: true,
+        firstname: `DB`,
+        is_deleted: false,
+        last_time_password_updated: new Date(`1970-01-01T00:00:00.000Z`),
+        lastname: `Test`,
+        nonlocked: true,
+        password: `123`,
+        password_never_expires: false,
+        phones: {
+          create: [
+            {
+              order_index: 1,
+              phone: testData.dbTest.phoneNumber,
+              phone_country_id: 1,
+            },
+          ],
+        },
+        username: `${testData.dbTest.usernamePrefix}${now}`,
       },
       include: {
-        phones: true,
         attachments: true,
+        phones: true,
       },
     });
 
@@ -51,7 +56,5 @@ test.describe('AppUser DB Test (via Prisma)', () => {
     expect(user.attachments[0].filename).toBe(testData.dbTest.attachmentFileName);
   });
 });
-
-
 
 //https://www.db-fiddle.com/f/kbcYPcE8v8xmKyggH1mGg/1

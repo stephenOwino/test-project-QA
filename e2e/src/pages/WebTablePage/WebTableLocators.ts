@@ -1,15 +1,14 @@
-
 //tables locators
-export const WebTableLocators  ={
-    tableHeader: 'h1.text-center',
-    addNewRecordButton: '#addNewRecordButton',
-    firstNameInput: '#firstName',
-    lastNameInput: '#lastName',
-    emailInput: '#userEmail',
-    ageInput: '#age',
-    salaryInput:'#salary',
-    departmentInput: '#department',
-    submitButton: '#submit',
-    rowLocator:'.rt-tr.-padRow:nth-child(4)',
-    deleteIcon: 'span#delete-record-1 svg',
-}
+export const WebTableLocators = {
+  addNewRecordButton: `#addNewRecordButton`,
+  ageInput: `#age`,
+  deleteIcon: `span#delete-record-1 svg`,
+  departmentInput: `#department`,
+  emailInput: `#userEmail`,
+  firstNameInput: `#firstName`,
+  lastNameInput: `#lastName`,
+  rowLocator: `.rt-tr.-padRow:nth-child(4)`,
+  salaryInput: `#salary`,
+  submitButton: `#submit`,
+  tableHeader: `h1.text-center`,
+};

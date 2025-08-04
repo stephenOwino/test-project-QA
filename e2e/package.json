@@ -2,16 +2,17 @@
   "name": "e2e",
   "private": true,
   "scripts": {
-    "lint": "eslint .",
-    "lint-staged": "lint-staged",
-    "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report",
-    "prepare": "cd .. && husky e2e/.husky",
-    "generate": "npx prisma generate",
-    "push": "npx prisma db push",
-    "studio": "npx prisma studio",
-    "init:db": "npx ts-node db/initDatabase.ts"
-  },
+  "lint": "eslint . --ext .ts,.tsx",
+  "lint:fix": "eslint . --ext .ts,.tsx --fix",
+  "lint-staged": "lint-staged",
+  "test:ui": "playwright test --ui",
+  "test:report": "playwright show-report",
+  "prepare": "husky install",
+  "generate": "npx prisma generate",
+  "push": "npx prisma db push",
+  "studio": "npx prisma studio",
+  "init:db": "npx ts-node db/initDatabase.ts"
+},
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
     "**/*.{js,ts,html}": "eslint --fix",

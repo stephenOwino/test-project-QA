@@ -11,10 +11,10 @@ type SQLiteDatabase = Database;
 export async function initDatabase(): Promise<SQLiteDatabase | undefined> {
   const db: SQLiteDatabase = await open({
     driver: sqlite3.Database,
-    filename: "test.db",
+    filename: `test.db`,
   });
 
-  console.log("Initializing database...");
+  console.log(`Initializing database...`);
 
   try {
     await db.exec(`
@@ -74,16 +74,16 @@ export async function initDatabase(): Promise<SQLiteDatabase | undefined> {
       );
     `);
 
-    console.log("Database initialized successfully!");
+    console.log(`Database initialized successfully!`);
 
     return db;
   } catch (error) {
-    console.error("Error initializing database:", error);
+    console.error(`Error initializing database:`, error);
   } finally {
     await db.close();
   }
 }
 
 initDatabase().catch((error: unknown) => {
-  console.error("Failed to initialize the database:", error);
+  console.error(`Failed to initialize the database:`, error);
 });
