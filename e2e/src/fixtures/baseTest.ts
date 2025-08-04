@@ -4,6 +4,8 @@ import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { AlertsPage } from "../pages/AlertsPage/AlertsPage";
 import { BrowserWindowsPage } from "../pages/BrowserWindowsPage/Browser-WindowsPage";
 import { UploadDownloadPage } from "../pages/UploadDownloadPage/UploadDownloadPage";
+import { WebTablesPage } from "../pages/WebTablePage/WebTablePage";
+
 
 type PageObjects = {
   registerPage: RegisterPage;
@@ -11,6 +13,7 @@ type PageObjects = {
   alertsPage: AlertsPage;
   browserWindowsPage:BrowserWindowsPage;
   uploadDownloadPage:UploadDownloadPage;
+  webTablesPage:WebTablesPage
 };
 
 type AuthFixture = {
@@ -34,6 +37,9 @@ export const test = baseTest.extend<PageObjects & AuthFixture>({
   },
   uploadDownloadPage: async({page} , use) =>{
     await use(new UploadDownloadPage(page));
+  },
+  webTablesPage: async({page}, use) =>{
+    await use(new WebTablesPage(page));
   },
 
   authenticatedPage: async ({ page, loginPage }, use) => {

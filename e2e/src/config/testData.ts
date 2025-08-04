@@ -29,6 +29,7 @@ export const testData = {
         samplePageMessage: "This is a sample page",
         newWindowMessageText: "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.",
     },
+    //upload-download data
     uploadDownload: {
         headerText: "Upload and Download",
         downloadFileName: "sampleFile.jpeg",
@@ -36,6 +37,11 @@ export const testData = {
         uploadedSuccessMessagePrefix: "C:\\fakepath\\",
         downloadButtonText: "Download",
         selectFileLabelText: "Select a file"
+    },
+    //web-table data
+    webTable:{
+      headerText: "Web Tables",
+
     }
 
 };

@@ -1,10 +1,13 @@
 import { test, expect } from "../fixtures/baseTest";
 import { faker } from "@faker-js/faker";
-import { LoginPage } from "../pages/LoginPage/LoginPage";
 
 test.describe("Login and Authentication Features", () => {
-  test("should display correct profile info for logged-in user", async ({ authenticatedPage }) => {
-    const loginPage = new LoginPage(authenticatedPage);
+
+   test.beforeEach(async ({ loginPage }) => {
+    await loginPage.goTo();
+  });
+
+  test("should display correct profile info for logged-in user", async ({ authenticatedPage, loginPage }) => {
     const username = await loginPage.getLoggedInUsername();
     expect(username).toBe(process.env.VALID_USERNAME);
 
@@ -20,6 +23,9 @@ test.describe("Login and Authentication Features", () => {
     await loginPage.login(invalidUsername, invalidPassword);
     await loginPage.expectInvalidUserOrPassMessage();
   });
+
 });
+
+
 
 
